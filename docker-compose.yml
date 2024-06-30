@@ -1,0 +1,13 @@
+services:
+  web_ngin_x:
+    build: ./mynginx-web
+    ports:
+      - 8000:80
+  web_go:
+    image: golang:1.21rc2-alpine
+    working_dir: /usr/src/app
+    command: go run main.go
+    volumes:
+      - ./go-web-dc-simple:/usr/src/app
+    ports:
+      - 80:8000
